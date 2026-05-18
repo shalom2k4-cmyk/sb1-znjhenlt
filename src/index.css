@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --rwanda-blue: #00A1DE;
+  --rwanda-yellow: #FAD201;
+  --navy-blue: #1A237E;
+  --eggshell: #FDFCF8;
+}
+
+body {
+  background-color: var(--eggshell);
+  color: #333333;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 1. Imigongo Geometric Separator */
+.imigongo-separator {
+  height: 6px;
+  width: 100%;
+  /* Creates a classic black/white triangular pattern using CSS gradients */
+  background: 
+    linear-gradient(45deg, #000 25%, transparent 25%), 
+    linear-gradient(-45deg, #000 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #000 75%),
+    linear-gradient(-45deg, transparent 75%, #000 75%);
+  background-size: 12px 12px;
+  background-color: #fff;
+  opacity: 0.15;
+  border-radius: 2px;
+}
+
+/* 2. Glassmorphism Card (Medical/Clean Look) */
+.glass-card {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05);
+}
+
+/* 3. Cultural Watermark Silhouettes */
+/* Note: If you don't have the SVG files yet, these will act as placeholders */
+.watermark-agaseke, 
+.watermark-hills, 
+.watermark-cattle, 
+.watermark-sun {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 60%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.04; /* Very subtle */
+}
+
+/* 4. Custom Component Styles */
+@layer components {
+  .btn-primary {
+    @apply bg-[#00A1DE] text-white font-bold py-3 px-6 rounded-2xl 
+           transition-all duration-200 active:scale-95 shadow-lg shadow-blue-500/20;
+  }
+  
+  .btn-audio {
+    @apply bg-[#FAD201] text-[#1A237E] font-black py-3 px-6 rounded-xl
+           flex items-center justify-center gap-2 shadow-md transition-all
+           hover:bg-[#E6BE00] active:scale-95;
+  }
+
+  .nav-item-active {
+    @apply text-[#00A1DE] font-bold relative;
+  }
+  
+  /* Adds a small dot under active nav items */
+  .nav-item-active::after {
+    content: '';
+    @apply absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-[#00A1DE] rounded-full;
+  }
+}
+
+/* 5. Smooth Scroll & Animations */
+html {
+  scroll-behavior: smooth;
+}
+
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+.animate-audio-pulse {
+  animation: pulse-subtle 2s infinite ease-in-out;
+}
