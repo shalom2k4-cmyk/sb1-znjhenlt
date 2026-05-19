@@ -6,6 +6,25 @@ type Category = 'all' | 'hiv' | 'hygiene' | 'future';
 
 const categoryIcons = { shield: Shield, droplets: Droplets, star: Star };
 
+// Helper function to safely convert standard YouTube links to Embed format
+const getEmbedUrl = (url: string) => {
+  if (!url) return '';
+  
+  // Handles standard watch links: youtube.com/watch?v=VIDEO_ID
+  if (url.includes('youtube.com/watch')) {
+    const videoId = url.split('v=')[1]?.split('&')[0];
+    return `https://www.youtube.com/embed/${videoId}`;
+  }
+  
+  // Handles short links: youtu.be/VIDEO_ID
+  if (url.includes('youtu.be/')) {
+    const videoId = url.split('youtu.be/')[1]?.split('?')[0];
+    return `https://www.youtube.com/embed/${videoId}`;
+  }
+  
+  return url; // Returns original if it's already an embed link or alternate layout
+};
+
 function InsightDetail({ insight, onClose }: { insight: Insight; onClose: () => void }) {
   const cat = insightCategories[insight.category];
   return (
@@ -38,7 +57,7 @@ function InsightDetail({ insight, onClose }: { insight: Insight; onClose: () => 
                 <span className="text-xs font-semibold text-white">Imashini y'ivideo</span>
               </div>
               <iframe
-                src={insight.videoUrl}
+                src={getEmbedUrl(insight.videoUrl)}
                 title={insight.title}
                 className="w-full h-48"
                 frameBorder="0"
