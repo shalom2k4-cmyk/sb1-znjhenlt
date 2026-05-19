@@ -69,7 +69,7 @@ export const insights: Insight[] = [
     category: 'hygiene',
     readTime: 5,
     image: 'https://www.newtimes.co.rw/thenewtimes/uploads/images/2026/01/19/96149.jpg',
-    videoUrl: 'https://youtu.be/2H2j3tJj6kY?si=y8rFB9ZtaK-oMcn4',
+    videoUrl: '<iframe width="560" height="315" src="https://www.youtube.com/embed/2H2j3tJj6kY?si=y8rFB9ZtaK-oMcn4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>',
     audioUrl: 'https://example.com/audio/period-pain-relief-rw.mp3',
   },
   {
